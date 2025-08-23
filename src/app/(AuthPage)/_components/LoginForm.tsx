@@ -5,37 +5,38 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@heroui/button";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-// import loginValidationSchema from "@/src/schemas/login.schema";
-// import { useUser } from "@/src/context/user.proider";
-// import { useUserLogin } from "@/src/hooks/auth.hook";
 import Image from "next/image";
 import PInput from "@/components/wrapper/PInput";
+import PForm from "@/components/wrapper/PForm";
+import loginValidationSchema from "@/schemas/login.schema";
+import { useUser } from "@/provider/user.provider";
+// import { useUserLogin } from "@/hooks/auth.hook";
 
 const LoginForm = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-//   const { setIsLoading: userLoading } = useUser();
+  const { setIsLoading: userLoading } = useUser();
 
   const redirect = searchParams.get("redirect");
 
-//   const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
+  // const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    handleUserLogin(data);
-    userLoading(true);
-  };
+  // const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  //   handleUserLogin(data);
+  //   userLoading(true);
+  // };
 
-  useEffect(() => {
-    if (!isPending && isSuccess) {
-      if (redirect) {
-        router.push(redirect);
-      } else {
-        router.push("/");
-      }
-    }
-  }, [isPending, isSuccess]);
+  // useEffect(() => {
+  //   if (!isPending && isSuccess) {
+  //     if (redirect) {
+  //       router.push(redirect);
+  //     } else {
+  //       router.push("/");
+  //     }
+  //   }
+  // }, [isPending, isSuccess]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -64,10 +65,11 @@ const LoginForm = () => {
 
             <div className="px-4 pt-4 pb-8 md:px-8 md:pt-8 md:pb-16  rounded-md shadow-md border border-gray-50 space-y-6">
               {/* Form */}
-              <PForm
+              {/* <PForm
                 resolver={zodResolver(loginValidationSchema)}
                 onSubmit={onSubmit}
-              >
+              > */}
+              <form>
                 <p className="mt-2 text-2xl text-center text-default-800 font-semibold mb-6 ml-2">Sign in to your account</p>
                 <div className="space-y-4">
                   <PInput label="Email Address" name="email" size="lg" />
@@ -78,14 +80,15 @@ const LoginForm = () => {
                 <div className="mt-6">
                   <Button
                     className="w-full rounded-none bg-orange-500 py-2 text-lg font-semibold text-white hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-                    disabled={isPending}
+                    // disabled={isPending}
                     size="lg"
                     type="submit"
                   >
-                    {isPending ? "Logging In..." : "Continue"}
+                    {/* {isPending ? "Logging In..." : "Continue"} */}
                   </Button>
                 </div>
-              </PForm>
+                {/* </PForm> */}
+              </form>
 
               {/* Forgot Password Link */}
               <div className="mt-4 text-center">
@@ -95,14 +98,14 @@ const LoginForm = () => {
               </div>
 
               {/* Divider */}
-              {/* <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4">
                 <div className="h-px flex-1 bg-gray-200" />
                 <span className="text-xs text-gray-600">Other log in options</span>
                 <div className="h-px flex-1 bg-gray-200" />
-              </div> */}
+              </div>
 
               {/* Social Auth Buttons */}
-              {/* <div className="flex flex-col space-y-2">
+              <div className="flex flex-col space-y-2">
                 <h1>Log In with Open Account</h1>
                 <Button
                   className="w-full rounded-md bg-white py-4 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 border-2 border-gray-200 flex items-center justify-center space-x-2"
@@ -117,7 +120,7 @@ const LoginForm = () => {
                   />
                   <span>Log In with Google</span>
                 </Button>
-              </div> */}
+              </div>
             </div>
 
             {/* Login Link */}
