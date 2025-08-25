@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Bot, ChevronDown, ChevronUp, X } from 'lucide-react';
+import { Bot, Plus, X } from 'lucide-react';
 
 export function FAQSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showChat, setShowChat] = useState(false);
+  const [activeTab, setActiveTab] = useState('faqs');
 
   const faqs = [
     {
@@ -46,85 +47,78 @@ export function FAQSection() {
     }
   ];
 
-  const toggleFAQ = (index: any) => {
+  const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? -1 : index);
   };
 
   return (
-    <div className="relative bg-gray-50 py-16 sm:py-24 lg:py-32" id="help-center">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative bg-white py-16 sm:py-16 lg:py-24" id="help-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl font-bold tracking-tight text-black mb-4 lg:text-3xl">
             Help Center
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            Any questions or remarks? Just write us a message!
+          <p className="text-md text-gray-800">
+            Any question or remarks? Just write us a message!
           </p>
         </div>
 
-        <div className="mt-16 lg:grid lg:grid-cols-3 lg:gap-12">
-          {/* Left Column - Contact Options */}
-          <div className="lg:col-span-1 mb-10 lg:mb-0">
-            <div className="bg-white rounded-xl shadow-md p-6 sticky top-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Get Help</h3>
-              
-              {/* FAQ Button */}
-              <button className="w-full flex items-center justify-between p-4 bg-blue-50 rounded-lg mb-4 hover:bg-blue-100 transition-colors">
-                <span className="font-medium text-gray-900">FAQs</span>
-                <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
-              </button>
-              
-              {/* AI Chat Button */}
-              <button 
-                onClick={() => setShowChat(true)}
-                className="w-full flex items-center justify-between p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors"
-              >
-                <span className="font-medium text-gray-900">AI Chat</span>
-                <Bot className="h-5 w-5 text-orange-500" />
-              </button>
-
-              {/* Contact Info */}
-              <div className="mt-8 pt-6 border-t border-gray-200">
-                <h4 className="font-medium text-gray-900 mb-3">Prefer direct contact?</h4>
-                <p className="text-gray-600 text-sm mb-4">
-                  Our team is available to answer your questions personally.
-                </p>
-                <a
-                  href="#"
-                  className="inline-flex items-center rounded-md bg-orange-500 px-4 py-2 text-sm font-medium text-white hover:bg-orange-400 transition-colors"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </div>
+        {/* Toggle Buttons */}
+        <div className="flex justify-center mb-12">
+          <div className="flex bg-gray-100 rounded-full p-1 max-w-md w-full">
+            <button
+              onClick={() => setActiveTab('faqs')}
+              className={`flex-1 py-3 px-6 rounded-full text-sm font-medium transition-all ${activeTab === 'faqs'
+                  ? 'bg-[#D4AF37] text-white shadow-md'
+                  : 'text-gray-600 hover:text-gray-900'
+                }`}
+            >
+              FAQs
+            </button>
+            <button
+              onClick={() => {
+                setActiveTab('chat');
+                setShowChat(true);
+              }}
+              className={`flex-1 py-3 px-6 rounded-full text-sm font-medium transition-all ${activeTab === 'chat'
+                  ? 'bg-[#D4AF37] text-white shadow-md'
+                  : 'text-gray-600 hover:text-gray-900'
+                }`}
+            >
+              AI Chat
+            </button>
           </div>
+        </div>
 
-          {/* Right Column - FAQs */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
-              {faqs.map((faq, index) => (
-                <div key={index} className="border-b border-gray-200 last:border-b-0">
-                  <button
-                    onClick={() => toggleFAQ(index)}
-                    className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
-                  >
-                    <span className="font-medium text-gray-900">{faq.question}</span>
-                    {activeIndex === index ? (
-                      <ChevronUp className="h-5 w-5 text-gray-500" />
-                    ) : (
-                      <ChevronDown className="h-5 w-5 text-gray-500" />
-                    )}
-                  </button>
-                  {activeIndex === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-600">{faq.answer}</p>
-                    </div>
+        {/* FAQs List */}
+        <div className="max-w-6xl mx-auto">
+          {faqs.map((faq, index) => (
+            <div key={index} className="">
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full flex items-center justify-between px-4 py-4 mb-2 bg-gray-50 rounded-xl text-left hover:bg-gray-50 transition-colors group"
+              >
+                <span className="font-semibold text-gray-900 text-md pr-8">
+                  {faq.question}
+                </span>
+                <div className="flex-shrink-0">
+                  {activeIndex === index ? (
+                    <X className="h-5 w-5 text-gray-800" />
+                  ) : (
+                    <Plus className="h-5 w-5 text-gray-800" />
                   )}
                 </div>
-              ))}
+              </button>
+              {activeIndex === index && (
+                <div className="pb-6 pr-12">
+                  <p className="text-gray-600 px-4 text-base leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -134,11 +128,14 @@ export function FAQSection() {
           <div className="bg-white rounded-xl shadow-2xl max-w-md w-full">
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <div className="flex items-center">
-                <Bot className="h-6 w-6 text-orange-500 mr-2" />
+                <Bot className="h-6 w-6 text-yellow-500 mr-2" />
                 <h3 className="font-semibold text-gray-900">AI Assistant</h3>
               </div>
               <button
-                onClick={() => setShowChat(false)}
+                onClick={() => {
+                  setShowChat(false);
+                  setActiveTab('faqs');
+                }}
                 className="text-gray-400 hover:text-gray-600"
               >
                 <X className="h-5 w-5" />
@@ -154,9 +151,9 @@ export function FAQSection() {
                 <input
                   type="text"
                   placeholder="Type your question..."
-                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
-                <button className="bg-orange-500 text-white rounded-lg px-4 py-2 hover:bg-orange-400 transition-colors">
+                <button className="bg-yellow-500 text-white rounded-lg px-4 py-2 hover:bg-yellow-400 transition-colors">
                   Send
                 </button>
               </div>

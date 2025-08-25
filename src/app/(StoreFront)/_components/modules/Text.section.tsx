@@ -2,14 +2,13 @@ import { Building2, Users, Target } from "lucide-react";
 
 export function TextSection() {
     return (
-        <div className="relative bg-white py-16 sm:py-24 lg:py-32">
-            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-                    <div className="lg:col-span-7">
-                        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="relative bg-white py-16 sm:py-16 lg:py-24">
+            <div className="container w-full mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="">
+                        <h2 className="text-2xl font-bold text-center tracking-tight text-[#D4AF37] sm:text-3xl">
                             Where Your Business Finds Its Space.
                         </h2>
-                        <div className="mt-8 text-lg text-gray-600 space-y-6">
+                        <div className="max-w-4xl mx-auto mt-8 text-md text-gray-900 space-y-6 text-center">
                             <p>
                                 At our core, we're more than a co-working space we're a full-service partner for building and growing your business in Dubai.
                             </p>
@@ -21,17 +20,17 @@ export function TextSection() {
                             </p>
                         </div>
                         
-                        <div className="mt-10">
+                        {/* <div className="mt-10">
                             <a
                                 href="#"
                                 className="rounded-md bg-orange-500 px-5 py-3 text-base font-medium text-white hover:bg-orange-400 transition-colors"
                             >
                                 Explore Our Spaces
                             </a>
-                        </div>
+                        </div> */}
                     </div>
                     
-                    <div className="mt-10 lg:col-span-5 lg:mt-0">
+                    {/* <div className="mt-10 lg:col-span-5 lg:mt-0">
                         <div className="flex flex-col space-y-6">
                             <div className="flex items-start">
                                 <div className="flex-shrink-0">
@@ -75,9 +74,8 @@ export function TextSection() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-        </div>
     );
 }

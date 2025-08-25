@@ -1,97 +1,130 @@
+import { Facebook, Twitter, Instagram } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="max-w-full mx-auto bg-default-100 border-t border-orange-200 text-default-700">
-      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 px-8 lg:px-24 pt-12 pb-8 place-items-center items-start">
-        {/* Brand Section */}
-        <div className="space-y-8 flex flex-col items-center md:items-start">
-          <h1 className="text-5xl font-serif text-orange-400 font-bold">PCardoz</h1>
-          <p className="text-lg text-balance leading-relaxed">
-            Best Businees Solutions for Your Success
-          </p>
+    <footer className="bg-white border-t border-gray-100 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+          {/* Left Column - Brand and Social */}
+          <div className="space-y-8">
+            {/* Logo */}
+            <div>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={120}
+                  height={40}
+                  priority
+                />
+              </Link>
+            </div>
 
-          {/* Social Icons */}
-          <div className="flex space-x-6 pt-2 text-orange-400">
-            {/* TikTok Icon from react-icons */}
-            {/* <a href="https://www.tiktok.com/@belladorjewelry" rel="noopener noreferrer" target="_blank">
-              <Tiktok className="w-8 h-8 text-black hover:text-gray-700 transition-colors" />
-            </a> */}
+            {/* Description */}
+            <p className="text-gray-800 text-md leading-relaxed max-w-md">
+              Launching your business in the UAE has never been easier. Experience a fast, simple, and hassle-free setup process tailored just for you.
+            </p>
 
-            {/* Instagram Icon from react-icons */}
-            {/* <a href="https://www.instagram.com/jewelrybellador?igsh=dTZxbHg3dzB6eWVu" rel="noopener noreferrer" target="_blank">
-              <Instagram className="w-8 h-8 text-[#E1306C] hover:text-[#C13584] transition-colors" />
-            </a> */}
-
-            {/* Facebook Icon from react-icons */}
-            {/* <a href="https://www.facebook.com/profile.php?id=61577797949792" rel="noopener noreferrer" target="_blank">
-              <Facebook className="w-8 h-8 text-[#1877F2] hover:text-[#0A64BC] transition-colors" />
-            </a> */}
+            {/* Social Media */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+              <div className="flex space-x-6">
+                <a
+                  href="#"
+                  className="flex items-center text-yellow-500 hover:text-yellow-600 transition-colors"
+                >
+                  <Facebook className="h-5 w-5 mr-2" />
+                  <span className="text-gray-700">Facebook</span>
+                </a>
+                <a
+                  href="#"
+                  className="flex items-center text-yellow-500 hover:text-yellow-600 transition-colors"
+                >
+                  <Twitter className="h-5 w-5 mr-2" />
+                  <span className="text-gray-700">Twitter</span>
+                </a>
+                <a
+                  href="#"
+                  className="flex items-center text-yellow-500 hover:text-yellow-600 transition-colors"
+                >
+                  <Instagram className="h-5 w-5 mr-2" />
+                  <span className="text-gray-700">Instagram</span>
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="pt-4 space-y-1 text-sm text-default-800 text-center hidden md:block">
-            <p>Legal & Policies</p>
-            <p>© 2025 CraftTrain. All Rights Reserved.</p>
-          </div>
-        </div>
 
-        {/* Quick Links Section */}
-        <div className="space-y-8 flex flex-col items-center md:items-start">
-          <h2 className="text-3xl font-serif text-orange-400 font-semibold">Quick Links</h2>
-          <div className=" text-center md:text-left">
-            <h3 className="font-medium">Category</h3>
-            <ul className="mt-2 space-y-2">
-              {["Earrings", "Bracelets", "Necklaces", "Rings"].map((item) => (
-                <li key={item}>
-                  <Link
-                    className="text-lg text-default-600 hover:text-black transition-colors"
-                    href={`/${item.toLowerCase()}`}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+          {/* Right Column - Company Links */}
+          <div className="lg:ml-auto">
+            <h3 className="text-lg font-semibold text-gray-900 mb-6">Company</h3>
+            <ul className="space-y-4">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Start a Company
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Compare Options
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Office Spaces
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  FAQs / Chat
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Contact Section */}
-        <div className="space-y-8 flex flex-col items-center md:items-start">
-          <h2 className="text-3xl font-serif text-orange-400 font-semibold">Contact Us</h2>
-          <div className="space-y-2 text-lg text-center md:text-left text-default-600">
-            <p>
-              <Link className="hover:text-black transition-colors" href="/contact">
-                Help Center
-              </Link>
-            </p>
-            <p>
-              Email:{" "}
-              <a className="hover:text-black transition-colors" href="mailto:Jewelry@info.com">
-                seide.judy@gmail.com
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div className="flex space-x-6">
+              <a
+                href="#"
+                className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+              >
+                Terms & Conditions
               </a>
-            </p>
-            <p>
-              Phone:{" "}
-              <a className="hover:text-black transition-colors" href="tel:01234567890">
-                1(305)-360-3048
-
+              <a
+                href="#"
+                className="text-gray-600 hover:text-gray-900 transition-colors text-sm"
+              >
+                Privacy Policy
               </a>
+            </div>
+            <p className="text-gray-500 text-sm">
+              Copyright © 2020. LogoIpsum. All rights reserved.
             </p>
-            <p>Location: North Miami,Florida, USA</p>
           </div>
-        </div>
-      </div>
-
-      {/* Legal & Policies Section (Mobile-only, at the bottom) */}
-      <div className="pt-4 space-y-1 text-sm text-default-800 text-center md:hidden">
-        <p>Legal & Policies</p>
-        <p>© 2025 CraftTrain. All Rights Reserved.</p>
-      </div>
-
-      {/* Divider Lines for md+ screens */}
-      <div className="max-w-6xl mx-auto hidden md:block mt-10">
-        <div className="grid grid-cols-3 gap-8">
-          <div className="border-r border-default-200 h-full" />
-          <div className="border-r border-default-200 h-full" />
         </div>
       </div>
     </footer>
